@@ -26,7 +26,6 @@ jobs:  # Collection of commands needed to accomplish a specific task
         auth:
           username: $DOCKER_USER
           password: $DOCKER_PASS
-    resource_class: large  # Options range from small to 2xlarge+
     steps:
       - checkout
       - setup_remote_docker:
@@ -45,8 +44,6 @@ jobs:  # Collection of commands needed to accomplish a specific task
     resource_class: demo/runner
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
           name: Log in to Docker Hub
           command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
